@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imprimir números em ordem decrescente.</title>
+</head>
+
+<body>
+  <h1>Imprima em ordem decrescente todos os números entre 20 e 0</h1>
+</body>
+
+<script>
+  function imprime(txt) {
+    document.write(txt);
+    document.write("<br>");
+  }
+
+  var inicio = 20;
+  var fim = 0;
+
+  while (inicio >= fim) {
+    imprime(inicio);
+    inicio -= 1;
+  }
+
+  imprime("FIM!");
+
+
+</script>
+
+</html>
