@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulsando a bolinha com canvas</title>
+
+  <style>
+    canvas {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas width="600" height="400"></canvas>
+</body>
+<script>
+
+  var tela = document.querySelector('canvas');
+  var pincel = tela.getContext('2d');
+
+  pincel.fillStyle = 'lightgray';
+  pincel.fillRect(0, 0, 600, 400);
+
+  var tamanhoRaio = 20;
+  var valor = 1;
+
+  function desenhaCirculo(x, y, raio, cor) {
+
+    pincel.fillStyle = cor;
+    pincel.beginPath();
+    pincel.arc(x, y, raio, 0, 2 * Math.PI);
+    pincel.fill();
+  }
+
+  function limpaTela() {
+    pincel.clearRect(0, 0, 600, 400);
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 600, 400);
+  }
+
+  function pulse () {
+    limpaTela();
+    desenhaCirculo(30, 50, tamanhoRaio, 'blue')
+
+    if (tamanhoRaio > 30) {
+      valor = -1;
+    } else if (tamanhoRaio < 20) {
+      valor = 1;
+    }
+
+    tamanhoRaio = tamanhoRaio + valor;
+  }
+
+
+  setInterval(pulse, 20);
+</script>
+
+</html>

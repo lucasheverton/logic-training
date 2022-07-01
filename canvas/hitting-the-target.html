@@ -30,6 +30,12 @@
   var valorX = 0;
   var valorY = 0;
 
+  function cleanCanvas() {
+    pincel.clearRect(0, 0, 600, 400);
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 600, 400);
+  }
+
   function desenhaCirculo(x, y, raio, cor) {
 
     pincel.fillStyle = cor;
@@ -40,15 +46,19 @@
     valorY = y;
   }
 
-  desenhaCirculo(300, 200, raio + 20, 'red'); // maior círculo
-  desenhaCirculo(300, 200, raio + 10, 'white');
-  desenhaCirculo(300, 200, raio, 'red'); // menor circulo
+  function createTarget() {
+    cleanCanvas();
+    var x = Math.round(Math.random() * 600);
+    var y = Math.round(Math.random() * 400);
+    
+    desenhaCirculo(x, y, raio + 20, 'red'); // maior círculo
+    desenhaCirculo(x, y, raio + 10, 'white');
+    desenhaCirculo(x, y, raio, 'red'); // menor circulo
+  } 
 
   function dispara($event) {
     var x = $event.pageX - $canvas.offsetLeft;
     var y = $event.pageY - $canvas.offsetTop;
-
-    console.log('x: ', x, '| y: ', y);
 
     if(
       x >= valorX - raio 
@@ -61,6 +71,8 @@
   }
 
   $canvas.onclick = dispara;
+
+  setInterval(createTarget, 1000)
 
 </script>
 
